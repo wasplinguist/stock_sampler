@@ -2,3 +2,7 @@ PyQt5
 pandas
 flask
 flask_restful
+bs4
+pymysql
+pymysql-pooling
+tqdm
