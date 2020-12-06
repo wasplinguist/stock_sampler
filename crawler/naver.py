@@ -18,8 +18,7 @@ def get_last_page_num(bs_obj):
 
     table_navi = bs_obj.find("table", class_="Nnavi")
     td_last_page = table_navi.find("td", class_="pgRR")
-    last_page = td_last_page.a.get('href').rsplit("&")[1]
-    last_page = last_page.split("=")[1]
+    last_page = td_last_page.a.get('href').rsplit("&page=")[1]
     last_page = int(last_page)
     return last_page
 
@@ -131,7 +130,8 @@ def get_available_date(date_string):
 
 
 def get_hourly_prices(index):
-    # 하루 전 기준 데이터 받아오
+    # 하루 전 기준 데이터 받아오기
+    # 일주일 이상된 데이터는 공개를 안하는 문제!!!!!!
 
     print("get {} stock hourly prices".format(index))
 
@@ -152,7 +152,7 @@ def get_hourly_prices(index):
     done = False
     for date in all_dates:
         print("date: {}".format(date))
-        timestamp = "".join(date.split("."))+"1530"
+        timestamp = "".join(date.split("."))+"153000"
 
         bs_obj = get_bs_obj(url.format(timestamp, 1))
 

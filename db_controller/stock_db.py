@@ -52,7 +52,7 @@ def insert_hourly_price(index, fastening_times, fastening_prices, bid_prices, as
 
     query_arr = []
     for i in range(len(fastening_times)):
-        query_arr.append(f"('{index}', '{fastening_times[i]}', {fastening_prices[i]}"
+        query_arr.append(f"('{index}', '{fastening_times[i]}', {fastening_prices[i]},"
                          f"{bid_prices[i]}, {ask_prices[i]}, {trading_volumes[i]})")
 
     connection = pool.get_conn()
