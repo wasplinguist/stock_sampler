@@ -26,11 +26,15 @@ class DataFeeder:
         if trCode == "OPTKWFID":
             return self.__requestOPTKWFID(**kwargs)
 
+        # get_next : 0 - 더 조회할 데이터가 없다. 2 - 더 조회할 데이터가 있다.
+        get_next = 0
         for k, v in kwargs.items():
             self.kiwoom.setInputValue(k, v)
+            if k == 'get_next':
+                get_next = v
 
         trName = getattr(TRName, trCode)
-        self.kiwoom.commRqData(trName, trCode, 0, "0000")
+        self.kiwoom.commRqData(trName, trCode, get_next, "0000")
         return getattr(self.kiwoom, trCode)
 
     def __requestOPTKWFID(

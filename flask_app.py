@@ -22,10 +22,10 @@ def main():
     kiwoom.commConnect()
     feeder = DataFeeder(kiwoom)
 
-    api.add_resource(OPT20005, "/opt20005", resource_class_kwargs={"feeder": feeder})
-    api.add_resource(OPT20006, "/opt20006", resource_class_kwargs={"feeder": feeder})
-    api.add_resource(OPT20007, "/opt20007", resource_class_kwargs={"feeder": feeder})
-    api.add_resource(OPT20008, "/opt20008", resource_class_kwargs={"feeder": feeder})
+    api.add_resource(OPT20005, "/opt20005", resource_class_kwargs={"feeder": feeder, "kiwoom": kiwoom})
+    api.add_resource(OPT20006, "/opt20006", resource_class_kwargs={"feeder": feeder, "kiwoom": kiwoom})
+    api.add_resource(OPT20007, "/opt20007", resource_class_kwargs={"feeder": feeder, "kiwoom": kiwoom})
+    api.add_resource(OPT20008, "/opt20008", resource_class_kwargs={"feeder": feeder, "kiwoom": kiwoom})
 
     threading.Thread(
         target=app.run,
