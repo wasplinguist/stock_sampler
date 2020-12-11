@@ -34,7 +34,7 @@ class Kiwoom(QAxWidget):
     def __init__(self):
 
         super().__init__()
-        self.setControl("KHOPENAPI.KHOpenAPICtrl.1")
+        self.setControl("KHOPENAPI.KHOpenAPICtrl.1") # COM 오브젝트 생성 (ProgID)
 
         # old process kill
         # self.__killOldProcess()
@@ -299,6 +299,7 @@ class Kiwoom(QAxWidget):
             raise KiwoomConnectError()
 
         tags = ["ACCOUNT_CNT", "ACCNO", "USER_ID", "USER_NAME", "GetServerGubun"]
+        # 전체 계좌 개수, 전체 계좌, 사용자 ID, 사용자 이름
         if tag not in tags:
             raise ParameterValueError()
 
